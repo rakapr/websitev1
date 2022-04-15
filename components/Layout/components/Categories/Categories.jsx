@@ -36,7 +36,7 @@ export default function Categories() {
               <Dropdown.Toggle id="dropdown-basic">
                 <i className="fas fa-plus"></i>
 
-                <Link href="/catagory/[id]" as={"/catagory/" + catagory.id} passHref>
+                <Link href="/catagory/[idd]" as={"/catagory/" + catagory.id} passHref>
                   <span className="forpadding"> {catagory.name}</span>
                 </Link>
               </Dropdown.Toggle>
