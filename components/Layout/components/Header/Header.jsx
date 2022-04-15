@@ -271,7 +271,7 @@ export default function Header() {
                 required
               />
 
-              <Link href="/search/[id]" as={"/search/" + text} passHref>
+              <Link href="/" as={"/" + text} passHref>
                 <button
                   className="btn btn-primary chane border-0"
                   type="submit"
