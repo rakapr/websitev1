@@ -132,17 +132,17 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/catagory/[slug]", "/catagory/[slug]"];
+  const paths = ["/catagory/[idd]", "/catagory/[idd]"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
-  const { id } = query || params;
+  const { idd } = query || params;
 
   let perPage = 1;
   // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
   const res = await fetch(
-    `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=${perPage}&size=60&sortType=&sortDirection=desc&instant=3`
+    `https://cbe.apricart.pk/v1/catalog/categories/products?category=${idd}&page=${perPage}&size=60&sortType=&sortDirection=desc&instant=3`
   );
   const alldata = await res.json();
   const postData = alldata.data;
