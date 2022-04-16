@@ -14,7 +14,7 @@ export default function Categories() {
   const [users, setUsers] = useState([]);
   const cookies = new Cookies();
 
-  const getPopularitems = async () => {
+  const getPopularitems =  async () => {
     const response = await axios.get(
       base_url_api + `/home/all?client_lat=34.02910146301811&client_long=71.63761019869207&city=${cookies.get('cities')}&lang=en&userid=abc123&web=true`
     );
@@ -24,8 +24,9 @@ export default function Categories() {
   useEffect(() => {
     getPopularitems();
   }, []);
+
   return (
-    <div className="mobile-navigation">
+    <div className="sidebar-navigation">
       <strong className="title">Category</strong>
 
       <div className="sidebar">
@@ -35,13 +36,17 @@ export default function Categories() {
               <Dropdown.Toggle id="dropdown-basic">
                 <i className="fas fa-plus"></i>
 
-               
+                <Link href="/catagory/[idd]" as={"/catagory/" + catagory.id} passHref>
+                  <span className="forpadding"> {catagory.name}</span>
+                </Link>
               </Dropdown.Toggle>
               {catagory.childrenData.map((sub) => {
                 return (
                   <Dropdown.Menu key={sub.id}>
                     <Dropdown.Item>
-                     
+                      <Link href="/catagory/[idd]" as={"/catagory/" + sub.id}>
+                        <a className="subcatagory">{sub.name}</a>
+                      </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 );
