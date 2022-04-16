@@ -147,14 +147,14 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/details/[id]", "/details/[slug]"];
+  const paths = ["/details/[id]", "/details/[id]"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
-  //const res = await fetch("https://jsonplaceholder.typicode.com/posts/" + id);
+  
   const res = await fetch(
     "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id 
   );
