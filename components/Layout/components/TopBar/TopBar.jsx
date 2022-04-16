@@ -7,8 +7,9 @@ let base_url_api = "https://cbe.apricart.pk/v1";
 
 export default function Layout() {
   const cookies = new Cookies();
-
+  const [isOpen, setIsOpen] = useState(false);
   if (cookies.get("cities") == "undefined") {
+    setIsOpen(!isOpen);
     cookies.set("cities", "karachi");
   }
 
@@ -38,7 +39,7 @@ export default function Layout() {
     getTicker();
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
+ 
 
   const togglePopup = () => {
     setIsOpen(!isOpen);
