@@ -145,11 +145,10 @@ export default function Post({ postData }) {
     </div>
   );
 }
-
-export async function getStaticPaths() {
-  const paths = ["/details/abc", "/details/def"];
-  return { paths, fallback: true };
-}
+export async function getStaticPaths() ({
+  paths: ['/details/conflicting', '/details/another'],
+  fallback: false,
+})
 
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
