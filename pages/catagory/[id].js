@@ -132,12 +132,12 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/catagory/1", "/catagory/2"];
+  const paths = ["/catagory/[1]", "/catagory/[2]"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
-  const { idd } = query || params;
+  const { id } = query || params;
 
   let perPage = 1;
   // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
