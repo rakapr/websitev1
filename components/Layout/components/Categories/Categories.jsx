@@ -44,7 +44,7 @@ export default function Categories() {
                 return (
                   <Dropdown.Menu key={sub.id}>
                     <Dropdown.Item>
-                      <Link href="/catagory/[idd]" as={"/catagory/" + sub.id}>
+                      <Link href="/catagory/[id]" as={"/catagory/" + sub.id}>
                         <a className="subcatagory">{sub.name}</a>
                       </Link>
                     </Dropdown.Item>
