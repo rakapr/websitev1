@@ -146,7 +146,7 @@ export default function Post({ postData }) {
   );
 }
 export async function getStaticPaths() ({
-  paths: ['/details/conflicting', '/details/another'],
+  paths: ['/details/1', '/details/2'],
   fallback: false,
 })
 
