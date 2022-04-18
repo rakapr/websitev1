@@ -54,7 +54,7 @@ export default function Post({ postData }) {
                 </section>
                 <div>
                   <PerPage />
-                  <h4 classNameName="itemFound">{total} Items Found</h4>
+                 <h6 classNameName="itemFound">{total} Items Found</h6>
                   
                   <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
                     {postData.map((cat) => {
