@@ -152,11 +152,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ query, params }) {
-  const { idd } = query || params;
+  const { sku } = query || params;
 
  
   const res = await fetch(
-    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + idd
+    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + sku
   );
   const alldata = await res.json();
   const postData = alldata.data;
