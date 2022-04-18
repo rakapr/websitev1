@@ -130,7 +130,7 @@ export default function RecommendedProducts() {
                         </div>
                         <div className="pro_img">
                           <Link
-                            href="/details/[id]"
+                            href="/details/[idd]"
                             as={"/details/" + curElem.sku}
                             className="Link-CSS"
                             passHref
