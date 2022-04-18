@@ -33,8 +33,7 @@ export default function Post({ postData }) {
       setNum(num - 1);
     }
   };
-  console.log("checking",postData)
-   console.log("checking data",postData)
+ 
   return (
     <div>
       <section className="popular_sec">
@@ -44,6 +43,8 @@ export default function Post({ postData }) {
               <Catagory1 />
             </div>
             <div className="col-12 col-sm-12  col-md-10  col-lg-9  col-xl-10  col-xxl-10 parot">
+   <h2>Details</h2>
+    <p>{console.log(postData)}</p>
               {postData.map((catagory) => {
                 const { productImageUrl, categoryleafName, minQty, maxQty } =
                   catagory;
