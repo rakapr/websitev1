@@ -147,10 +147,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
-  let perPage = 1;
- 
+  
   const res = await fetch(
-    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id 
+   "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id  
   );
   const alldata = await res.json();
   const postData = alldata.data;
