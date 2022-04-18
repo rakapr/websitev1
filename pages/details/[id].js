@@ -34,65 +34,69 @@ export default function Post({ postData }) {
             <div className="col-12 col-sm-2  col-md-2  col-lg-3  col-xl-2  col-xxl-2">
               <Catagory1 />
             </div>
-            <div className="col-12 col-sm-12  col-md-10  col-lg-9  col-xl-10  col-xxl-10 parot">
-              <div className="container-fluid">
-                <section className="categorybanner_sec">
-                  <div>
-                    <div className="row">
-                      <div className="col-12 col-sm-12  col-md-12  col-lg-12  col-xl-12  col-xxl-12">
-                        <div className="recommend_banner">
-                          <Image
-                            src="/assets/images/bachatbox.png"
-                            className="img-fluid"
-                            alt=""
-                            width="100%" height="20%" layout="responsive" objectFit="contain"
-                          />
+             <div className="col-12 col-sm-12  col-md-10  col-lg-9  col-xl-10  col-xxl-10 parot">
+              {postData.map((catagory) => {
+                const { productImageUrl, categoryleafName, minQty, maxQty } =
+                  catagory;
+                return (
+                  <>
+                   
+                    <section className="ContentSec">
+                      <div className="container-fluid">
+                        <div className="prothreeHead">
+                          <ol className="breadcrumb">
+                            <li>
+                              {" "}
+                              <a passHref="">Home</a>{" "}
+                            </li>
+                            <li>
+                              <a passHref="">{categoryleafName}</a>
+                            </li>
+                            <li>
+                              <a passHref="">{catagory.title}</a>
+                            </li>
+                          </ol>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </section>
-                <div>
-                  <PerPage />
-                  <h4 classNameName="itemFound">{total} Items Found</h4>
-                  
-                  <div className="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-                    {postData.map((cat) => {
-                      const { productImageUrl } = cat;
-                      return (
-                        <>
-                          <div className="col">
-                            <div className="p-3 border bg-light btnchan">
-                              <div className="pro_img">
-                                <Link
-                                  href="/details/[id]"
-                                  as={"/details/" + cat.sku}
-                                  className="Link-CSS"
-                                  passHref
-                                >
-                                  <img
-                                    src={base_url_api + productImageUrl}
-                                    className="img-fluid"
-                                    alt=""
-                                  />
-                                </Link>
-                                <h5>{cat.title}</h5>
-
-                                <h4>
-                                  RS. <strong>{cat.currentPrice}</strong>
-                                </h4>
-                                <div className="pro_btn1">
-                                  <select name="product" id="product" >
-                                    <option value="1">1 KG</option>
-                                    <option value="2">2 KG</option>
-                                    <option value="3">3 KG</option>
-                                  </select>
-                                </div>
-                                {cat.inStock == true ? (
-                                  <div
+                    </section>
+                    <section className="productdet_sec">
+                      <div className="container">
+                        <div className="row">
+                          <div className="col-12 col-sm-4  col-md-4  col-lg-4  col-xl-4  col-xxl-4">
+                            <div className="proDimg">
+                              <img
+                                src={base_url_api + productImageUrl}
+                                classNameName="img-fluid"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div className="col-12 col-sm-6  col-md-6  col-lg-6  col-xl-6  col-xxl-6">
+                            <div className="productD_head">
+                              <h3>{catagory.title}</h3>
+                              <hr />
+                              <h4>Rs. {catagory.currentPrice}</h4>
+                              <hr />
+                              <div className="productD_para">
+                                <p>{catagory.description}</p>
+                                <span>{catagory.sku}</span>
+                              </div>
+                              <ul className="detail-pro">
+                                <li>
+                                  <div className="prodetails_size">
+                                    <select name="product" id="productd">
+                                      <option value="1">1 KG</option>
+                                      <option value="2">2 KG</option>
+                                      <option value="3">3 KG</option>
+                                    </select>
+                                  </div>
+                                </li>
+                                <li>
+                                  {catagory.inStock == true ? (
+                                    <div
                                     className="pro_btn2"
                                     onClick={() =>
-                                      dispatch(addToCart(cat))
+                                      dispatch(addToCart(catagory))
                                     }
                                   >
                                     <a
@@ -102,30 +106,32 @@ export default function Post({ postData }) {
                                       Add to Cart
                                     </a>
                                   </div>
-                                ) : (
-                                  <>
-                                    <div className="pro_btn2">
-                                      <a
-                                        href="#"
-                                        className="btn btn chane secondary"
-                                      >
-                                        Out of stock
-                                      </a>
-                                    </div>
-                                  </>
-                                )}
-                              </div>
+                                  ) : (
+                                    <>
+                                      <div className="pro_btn2">
+                                        <a
+                                          passHref="#"
+                                          className="btn btn chane secondary"
+                                          disabled
+                                        >
+                                          Out of stock
+                                        </a>
+                                      </div>
+                                    </>
+                                  )}
+                                </li>
+                              </ul>
                             </div>
                           </div>
-                        </>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              {total <= 15 ? <></> : <Pagination />}
+                        </div>
+                      </div>
+                    </section>
+                  </>
+                );
+              })}
+              <RelatedProduct />
             </div>
-          </div>
+           </div>
         </div>
       </section>
     </div>
@@ -141,9 +147,9 @@ export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
   let perPage = 1;
-  // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
+ 
   const res = await fetch(
-    `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=${perPage}&size=60&sortType=&sortDirection=desc&instant=3`
+    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id 
   );
   const alldata = await res.json();
   const postData = alldata.data;
