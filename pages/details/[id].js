@@ -9,6 +9,7 @@ import PerPage from "../../components/Layout/components/PerPage/PerPage";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cart.slice";
 import Image from 'next/image'
+import RelatedProduct from "../../components/Layout/components/RelatedProduct/RelatedProduct";
 
 
 export default function Post({ postData }) {
