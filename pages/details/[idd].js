@@ -33,7 +33,7 @@ export default function Post({ postData }) {
       setNum(num - 1);
     }
   };
-
+  console.log("checking",postData)
   return (
     <div>
       <section className="popular_sec">
