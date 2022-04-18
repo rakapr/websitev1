@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import Catagory1 from "../../components/Layout/components/Categories/Categories";
+import RelatedProduct from "../../components/Layout/components/RelatedProduct/RelatedProduct";
 let base_url_api = "https://cbe.apricart.pk/v1";
-import Link from "next/link";
-import Pagination from "../../components/Layout/components/Pagination/pagination";
-import PerPage from "../../components/Layout/components/PerPage/PerPage";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cart.slice";
-import Image from 'next/image'
-import RelatedProduct from "../../components/Layout/components/RelatedProduct/RelatedProduct";
+import Cookies from 'universal-cookie';
 
 
 export default function Post({ postData }) {
+  let [num, setNum] = useState(1);
   const dispatch = useDispatch();
+  const cookies = new Cookies();
 
   const router = useRouter();
-
-  const [size, setSize] = useState("15");
   if (router.isFallback) {
     return (
       <div>
@@ -25,17 +21,28 @@ export default function Post({ postData }) {
       </div>
     );
   }
-  function perPage() {}
-  let total = postData.length;
+
+  
+  let incNum = () => {
+    if (num < 5) {
+      setNum(Number(num) + 1);
+    }
+  };
+  let decNum = () => {
+    if (num > 0) {
+      setNum(num - 1);
+    }
+  };
+
   return (
     <div>
       <section className="popular_sec">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-12 col-sm-2  col-md-2  col-lg-3  col-xl-2  col-xxl-2">
+          <div className="col-12 col-sm-2  col-md-2  col-lg-3  col-xl-2  col-xxl-2">
               <Catagory1 />
             </div>
-             <div className="col-12 col-sm-12  col-md-10  col-lg-9  col-xl-10  col-xxl-10 parot">
+            <div className="col-12 col-sm-12  col-md-10  col-lg-9  col-xl-10  col-xxl-10 parot">
               {postData.map((catagory) => {
                 const { productImageUrl, categoryleafName, minQty, maxQty } =
                   catagory;
@@ -132,7 +139,7 @@ export default function Post({ postData }) {
               })}
               <RelatedProduct />
             </div>
-           </div>
+          </div>
         </div>
       </section>
     </div>
@@ -140,20 +147,19 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/details/2", "/details/2"];
+  const paths = ["/details/3", "/details/3"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
-  
+ 
   const res = await fetch(
-   "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id  
+    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id
   );
   const alldata = await res.json();
   const postData = alldata.data;
-
   return {
     props: {
       postData,
