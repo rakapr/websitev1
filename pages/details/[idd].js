@@ -154,15 +154,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
-
-  let perPage = 1;
-  // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
   const res = await fetch(
-    `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=${perPage}&size=60&sortType=&sortDirection=desc&instant=3`
+    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id 
   );
   const alldata = await res.json();
   const postData = alldata.data;
-
   return {
     props: {
       postData,
