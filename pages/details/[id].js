@@ -154,7 +154,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
-  //const res = await fetch("https://jsonplaceholder.typicode.com/posts/" + id);
+ 
   const res = await fetch(
     "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id 
   );
