@@ -146,18 +146,20 @@ export default function Post({ postData }) {
   );
 }
 export async function getStaticPaths() {
-  const paths = ["/details/[idd]", "/details/[idd]"];
+  const paths = ["/details/2", "/details/2"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
-  const { idd } = query || params;
- 
+  const { id } = query || params;
+
+  let perPage = 1;
+  // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
   const res = await fetch(
-   "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + idd
+    `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=${perPage}&size=60&sortType=&sortDirection=desc&instant=3`
   );
   const alldata = await res.json();
-  const postData = alldata;
+  const postData = alldata.data;
 
   return {
     props: {
