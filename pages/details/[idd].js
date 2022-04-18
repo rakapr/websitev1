@@ -157,7 +157,7 @@ export async function getStaticProps({ query, params }) {
    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + idd
   );
   const alldata = await res.json();
-  const postData = alldata.data;
+  const postData = alldata;
 
   return {
     props: {
