@@ -147,16 +147,16 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/details/[idd]", "/details/[idd]"];
+  const paths = ["/details/[idd]", "/details/[sku]"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
-  const { sku } = query || params;
+  const { id } = query || params;
 
  
   const res = await fetch(
-    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + sku
+    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id
   );
   const alldata = await res.json();
   const postData = alldata.data;
