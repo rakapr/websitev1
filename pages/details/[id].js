@@ -147,7 +147,7 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/details/[id]", "/details/2"];
+  const paths = ["/details/3", "/details/2"];
   return { paths, fallback: true };
 }
 
