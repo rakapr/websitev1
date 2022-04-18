@@ -154,7 +154,7 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/search/{id}", "/search/{id}"];
+  const paths = ["/search/1", "/search/2"];
   return { paths, fallback: true };
 }
 
@@ -162,7 +162,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
-  // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
+ 
   const res = await fetch(
     `https://cbe.apricart.pk/v1/catalog/products/search?page=1&size=60&term=${id}&category=&city=${cookies.get('cities')}&lang=en`
   );
