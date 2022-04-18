@@ -321,7 +321,7 @@ export default function Header() {
                 className="suggestion col-md-12"
               >
                 <Link
-                  href="/details/[id]"
+                  href="/details/[idd]"
                   as={"/details/" + suggestion.sku}
                   className="Link-CSS"
                   passHref
