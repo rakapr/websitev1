@@ -149,7 +149,7 @@ export default function Post({ postData }) {
   );
 }
 export async function getStaticPaths() {
-  const paths = ["/details/[idd]", "/details/[idd]"];
+  const paths = ["/details/[idd]", "/details/[idd1]"];
   return { paths, fallback: false };
 }
 
