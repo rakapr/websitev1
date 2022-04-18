@@ -145,21 +145,22 @@ export default function Post({ postData }) {
     </div>
   );
 }
-
 export async function getStaticPaths() {
-  const paths = ["/details/[id]","details/[id]"];
+  const paths = ["/details/2", "/details/2"];
   return { paths, fallback: true };
 }
 
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
 
-  //const res = await fetch("https://jsonplaceholder.typicode.com/posts/" + id);
+  let perPage = 1;
+  // `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=1&size=10&sortType=&sortDirection=desc&instant=3`
   const res = await fetch(
-    "https://cbe.apricart.pk/v1/catalog/products/detail?id=" + id 
+    `https://cbe.apricart.pk/v1/catalog/categories/products?category=${id}&page=${perPage}&size=60&sortType=&sortDirection=desc&instant=3`
   );
   const alldata = await res.json();
   const postData = alldata.data;
+
   return {
     props: {
       postData,
