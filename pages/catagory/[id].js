@@ -133,7 +133,7 @@ export default function Post({ postData }) {
 }
 
 export async function getStaticPaths() {
-  const paths = ["/catagory/[id]", "/catagory/[slug]"];
+  const paths = ["/catagory/[idd]", "/catagory/[slug]"];
   return { paths, fallback: true };
 }
 
