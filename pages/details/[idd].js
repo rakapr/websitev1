@@ -43,8 +43,7 @@ export default function Post({ postData }) {
               <Catagory1 />
             </div>
             <div className="col-12 col-sm-12  col-md-10  col-lg-9  col-xl-10  col-xxl-10 parot">
-   <h2>Details</h2>
-    <p>{console.log(postData)}</p>
+   
               {postData.map((catagory) => {
                 const { productImageUrl, categoryleafName, minQty, maxQty } =
                   catagory;
@@ -149,7 +148,7 @@ export default function Post({ postData }) {
   );
 }
 export async function getStaticPaths() {
-  const paths = ["/details/[idd]", "/details/[idd1]"];
+  const paths = ["/details/[idd]", "/details/[idd]"];
   return { paths, fallback: false };
 }
 
