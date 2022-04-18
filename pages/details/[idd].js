@@ -34,6 +34,7 @@ export default function Post({ postData }) {
     }
   };
   console.log("checking",postData)
+   console.log("checking data",postData)
   return (
     <div>
       <section className="popular_sec">
@@ -137,6 +138,7 @@ export default function Post({ postData }) {
                   </>
                 );
               })}
+              { console.log("checking data",postData)}
               <RelatedProduct />
             </div>
           </div>
