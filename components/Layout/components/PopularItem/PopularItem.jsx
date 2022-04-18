@@ -63,7 +63,7 @@ const useEffectAPI = () => {
                     </div>
                     <div className="pro_img">
                       <Link
-                        href="/details/[id]"
+                        href="/details/[idd]"
                         as={"/details/" + list.sku}
                         className="Link-CSS"
                         passHref
