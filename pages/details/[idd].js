@@ -149,8 +149,9 @@ export default function Post({ postData }) {
 }
 export async function getStaticPaths() {
   const paths = ["/details/[idd]", "/details/[idd]"];
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }
+
 
 export async function getStaticProps({ query, params }) {
   const { id } = query || params;
