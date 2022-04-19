@@ -150,7 +150,7 @@ export default function Post({ postData }) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { idd:[id] } } 
+      { params: { idd:[1] } } 
     ],
     fallback: true
 }
