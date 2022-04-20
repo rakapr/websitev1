@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../../redux/cart.slice";
 import { addToWish } from "../../../../redux/wish.slice";
-let base_url_api = "https://cbe.apricart.pk/v1";
+let base_url_api = "https://staging.apricart.pk/v1";
 import { AiOutlineHeart } from "react-icons/ai";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
