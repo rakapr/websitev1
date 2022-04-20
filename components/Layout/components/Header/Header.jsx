@@ -18,7 +18,7 @@ import Image from 'next/image'
 
 
 
-const baseURL = "https://cbe.apricart.pk/v1";
+const baseURL = "https://staging.apricart.pk/v1";
 
 export default function Header() {
   const [users, setUsers] = useState([]);
