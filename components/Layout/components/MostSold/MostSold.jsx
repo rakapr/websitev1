@@ -11,7 +11,7 @@ import Cookies from 'universal-cookie';
 import Image from 'next/image'
 
 
-let base_url_api = "https://cbe.apricart.pk/v1";
+let base_url_api = "https://staging.apricart.pk/v1";
 
 export default function RecommendedProducts() {
   
