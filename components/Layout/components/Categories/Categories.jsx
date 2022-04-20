@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import Link from "next/link";
 import { Button, Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-let base_url_api = "https://cbe.apricart.pk/v1";
+let base_url_api = "https://staging.apricart.pk/v1";
 
 export default function Categories() {
   const city = "karachi"; //city from popup
